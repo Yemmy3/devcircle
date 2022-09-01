@@ -206,7 +206,7 @@ def add_to_cart(request):
                 basket.qty += quantity
                 basket.amount = main.price * basket.qty
                 basket.save()
-                messages.success(request, format_html('one item added..... <a href="http://3.144.188.65/cart">View Cart</a>'))
+                messages.success(request, format_html('one item added..... <a href="http://54.167.189.240/cart">View Cart</a>'))
                 return redirect('home')
             else:
                 newitem = Cart()
@@ -217,7 +217,7 @@ def add_to_cart(request):
                 newitem.amount = main.price * quantity
                 newitem.paid = False
                 newitem.save()
-                messages.success(request, format_html('one item added..... <a href="http://3.144.188.65/cart" style="color:red;">View Cart</a>'))
+                messages.success(request, format_html('one item added..... <a href="http://54.167.189.240/cart" style="color:red;">View Cart</a>'))
                 return redirect('home')
         else:
             newcart = Cart()
@@ -310,7 +310,7 @@ def pay(request):
     if request.method == 'POST':
         api_key = 'sk_test_a1c8d758a1269536b17d719f18d0fc92f50d8a4b' #secret key from paystack
         curl = 'https://api.paystack.co/transaction/initialize' #paystack call url
-        cburl = 'http://3.144.188.65/callback' #payment confirmation page
+        cburl = 'http://54.167.189.240/callback' #payment confirmation page
         ref = str(uuid.uuid4()) #reference number required by paystack as an additional order number
         profile = Customer.objects.get(user__username = request.user.username)
         order_no = profile.id #main order number
